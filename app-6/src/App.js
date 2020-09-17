@@ -6,17 +6,31 @@ import Todo from './Components/Todo'
 export default class App extends Component {
   constructor() {
     super();
+
+    this.state = {
+      list: [],
+      tasks: ''
+    }
+
+    //bind statement!!
+    this.updateTodoList = this.updateTodoList.bind(this);
   }
 
-  handleInput() {
-
+  handleInput(tasks) {
+    this.setState({ tasks: value })
   }
 
   updateTodoList() {
-
+    this.setState({
+      list: [...this.state.list, this.state.tasks]
+        tasks: '' //why does this need to be repeated?? 
+    });
   }
 
   render() {
+    let tasks = this.state.tasks.map((element, index) => {
+      return <Todo key={index} task={element} />;
+    });
     return (
       <div>
         My To Do List:
